@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="./LiveHTML-object.js"></script>
+	<script>
+		var options = {
+			// first is the index second is the value third is placeholder
+			title: ["input", "title test", "Title"],
+			// if it is a select then the first index the element second is the selected option and then every other is the option text the next one is the value for that option
+			category: ["select", "opt2", "opt1", "val1", "opt2", "val2", "opt3", "val3"],
+			location: {
+				lat: ["input", "", "Lat"],
+				lon: ["input", "", "Lon"]
+			}
+		}
+		window.onload = function() {
+			LiveHTML_Object("app", options, "result", 200);
+		}
+	</script>
+</head>
+<body>
+	<section id="app">
+		<input name="title" value="title test" placeholder="Title" type="text">
+		<select name="category">
+			<option value="val1">opt1</option>
+			<option value="val2" selected="">opt2</option>
+			<option value="val3">opt3</option>
+		</select>
+		<div data-parent-name="location">
+			<input name="lat" value="" placeholder="Lat" type="text">
+			<input name="lon" value="" placeholder="Lon" type="text">
+		</div>
+	</section>
+	<textarea cols="50" id="result" rows="10"></textarea>
+</body>
+</html>
