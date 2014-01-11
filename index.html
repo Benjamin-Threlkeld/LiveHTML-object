@@ -14,9 +14,19 @@
 				lat: ["input", "", "Lat"],
 				lon: ["input", "", "Lon"]
 			}
-		}
+		};
 		window.onload = function() {
-			LiveHTML_Object("app", options, "result", 200);
+			var resultElement = document.getElementById("result");
+			var lastUpdate = "";
+			callback = function () {
+				thisUpdate = JSON.stringify(options, null, " ")
+				if (lastUpdate !== thisUpdate) {	
+					resultElement.value = thisUpdate;
+					lastUpdate = thisUpdate;
+				}
+			}
+			LiveHTML_Object("app", options, "result", 200, callback);
+
 		}
 	</script>
 </head>

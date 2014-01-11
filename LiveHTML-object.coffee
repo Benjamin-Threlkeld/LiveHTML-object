@@ -6,7 +6,7 @@ Interval = (obj, obj2) ->
 		else
 			Interval obj[prop], obj2[prop]
 
-LiveHTML_Object = (scope, liveObject, resultElement, interval) ->
+LiveHTML_Object = (scope, liveObject, resultElement, interval, callback) ->
 	inputs = {}
 	@interval = interval
 	scope = document.getElementById scope
@@ -29,10 +29,7 @@ LiveHTML_Object = (scope, liveObject, resultElement, interval) ->
 	lastUpdate = ""
 	setInterval(->
 		Interval liveObject, inputs
-		thisUpdate = JSON.stringify(options, null, " ")
-		if lastUpdate isnt thisUpdate
-			resultElement.value = thisUpdate
-			lastUpdate = thisUpdate
+		callback()
 	, @interval)
 
 
